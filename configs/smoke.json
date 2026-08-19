@@ -1,0 +1,43 @@
+{
+  "dataset": {
+    "path": "data/rir_NBI_line.h5",
+    "impulse_response_key": "/line02/impulse_response",
+    "positions_key": "/line02/posRIR",
+    "original_sample_rate_hz": 48000.0,
+    "sound_speed_m_s": 343.0
+  },
+  "experiment": {
+    "nx": 32,
+    "nt": 32,
+    "x_start_range": [1, 73],
+    "time_ranges": {"early": [600, 620], "late": [2316, 2336]},
+    "mask_types": ["random"],
+    "timings": ["early"],
+    "sampling_ratios": [0.5],
+    "input_snrs_db": [10],
+    "trials": 1,
+    "methods": ["linear", "wavelet", "boostlet_l1"],
+    "window_seed": 42,
+    "mask_seed_mode": "trial_index"
+  },
+  "solver": {
+    "lambda_factors": [0.01],
+    "step_size": 1.0,
+    "max_iterations": 2,
+    "lcurve_smoothing": 0.2,
+    "lcurve_min_log_solution": -1.5
+  },
+  "linear": {"cone_eta": 0.95},
+  "wavelet": {"name": "db4", "level": 1, "mode": "periodization"},
+  "shearlet": {"scales": 1, "removed_indices": []},
+  "boostlet": {
+    "levels": [1],
+    "use_adaptive_cutoff": false,
+    "h0": 0.25,
+    "alpha": 1.0,
+    "use_top_cap": true,
+    "fixed_removed_indices": {"1": []},
+    "cutoff_tables": "outputs/calibration"
+  },
+  "output_directory": "outputs/smoke"
+}

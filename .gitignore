@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+*~
+
+# Input data and generated artifacts
+data/*
+!data/README.md
+outputs/
+results/
+figures/
+*.h5
+*.hdf5
+
+# Job-system output
+*.out
+*.err
+slurm-*.out
+
+# Secrets
+.env
+.env.*
+!.env.example
