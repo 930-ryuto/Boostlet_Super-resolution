@@ -55,16 +55,45 @@ The repository does not download or redistribute this dataset.
 
 ## Running a reconstruction
 
-The package provides two commands after installation. Boostlet methods with the
-default adaptive cutoff require a matching cutoff table first:
+### 1. Run a small local check
+
+After placing compatible input data, start with the smoke configuration. It runs
+one 32-by-32 trial and does not require a cutoff table:
+
+```bash
+boostlet-run --config configs/smoke.json --method boostlet_l1 \
+  --mask-type random --timing early --sampling-ratio 0.5
+```
+
+The result is written below `outputs/smoke/`.
+
+### 2. Create a cutoff table for a main Boostlet run
+
+The main configuration enables adaptive cutoffs for Boostlet methods. Generate a
+table for the same mask type, Boostlet level, and sampling ratio as the run:
 
 ```bash
 boostlet-calibrate --mask-type random --level 3 --sampling-ratio 0.3
-boostlet-run --method boostlet_l3 --mask-type random --timing late --sampling-ratio 0.3
 ```
 
-Outputs are written below `outputs/`, which is ignored by Git. Use `--config` to
-select another configuration, and `--help` to see the complete command options.
+This command uses the input data to evaluate the configured SNRs, calibration
+windows, and candidate cutoffs. It writes
+`outputs/calibration/boostlet_l3_random_sr30.csv`. Run calibration again for
+each mask/level/ratio combination you intend to use. Linear, Wavelet, and
+Shearlet runs do not require a cutoff table.
+
+### 3. Run the main configuration
+
+```bash
+boostlet-run --method boostlet_l3 --mask-type random --timing late \
+  --sampling-ratio 0.3
+```
+
+The default configuration runs 100 trials at five input SNRs, so it can be
+computationally expensive. Results are written as CSV files below
+`outputs/monte_carlo/`. Use `--trial-start`, `--trial-stop`, `--output`, and
+`--config` to select a subset, choose an output path, or use a different
+configuration. Both commands support `--help`.
 
 ## Method summary
 

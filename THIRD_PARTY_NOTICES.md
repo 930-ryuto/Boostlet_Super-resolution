@@ -3,8 +3,10 @@
 ## Boostlets
 
 The Boostlet construction in `src/boostlet_reconstruction/transforms/boostlet.py`
-is a cleaned Python implementation of the transform used in this research. The
-upstream research software is maintained by Elias Zea and collaborators:
+is a cleaned Python implementation of the transform used in this research, based
+on Boostlets research software by Elias Zea, Marco Laudato, and Joakim Andén.
+
+Upstream source:
 
 <https://github.com/eliaszea/Boostlets_SparsityAnalysis>
 

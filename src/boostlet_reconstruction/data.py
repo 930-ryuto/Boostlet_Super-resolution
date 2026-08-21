@@ -30,7 +30,7 @@ class NBILineDataset:
         path = self.config.path
         if not path.is_file():
             raise FileNotFoundError(
-                f"Dataset not found: {path}. See data/README.md for the expected layout."
+                f"Dataset not found: {path}. See README.md for the expected HDF5 keys."
             )
         with h5py.File(path, "r") as handle:
             for key in (self.config.impulse_response_key, self.config.positions_key):
