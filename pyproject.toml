@@ -7,7 +7,7 @@ name = "boostlet-wavefield-superresolution"
 version = "0.1.0"
 description = "Reproducible code for Boostlet-based acoustic wavefield super-resolution."
 readme = "README.md"
-requires-python = ">=3.10,<3.11"
+requires-python = ">=3.10,<3.13"
 license = "GPL-3.0-or-later"
 authors = [
   {name = "Ryuto Saeki", email = "saekiryuto@keio.jp"},

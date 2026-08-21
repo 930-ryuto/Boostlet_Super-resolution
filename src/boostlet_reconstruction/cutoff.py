@@ -21,7 +21,7 @@ def cutoff_table_path(
 def read_cutoff_table(path: Path) -> list[dict[str, float]]:
     if not path.is_file():
         raise FileNotFoundError(
-            f"Cutoff calibration table not found: {path}. Run scripts/run_calibration.py first."
+            f"Cutoff calibration table not found: {path}. Run boostlet-calibrate first."
         )
     rows: list[dict[str, float]] = []
     with path.open(newline="", encoding="utf-8") as handle:

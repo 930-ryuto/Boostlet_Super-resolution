@@ -19,7 +19,6 @@ venv/
 
 # Input data and generated artifacts
 data/*
-!data/README.md
 outputs/
 results/
 figures/
